@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const MainController = require("./controllers/MainController")
+const MainController = require("./controllers/MainController")
 //const AuthController = require("./controllers/auth/authController")
 const adminController = require("./controllers/AdminController");
 
@@ -25,4 +25,6 @@ router
 
 router.route("/admin/partenaire/:id").delete(adminController.deletepartenaire);
 
+
+router.route("/home").get(MainController.getall)
 module.exports = router;

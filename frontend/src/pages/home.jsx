@@ -8,8 +8,33 @@ import formation from "../img/salle-de-classe.png";
 import insertion from "../img/Integration.png";
 import Footer from "../components/footer";
 import Images from "../components/images";
+import Events from "../components/events";
+import allevents from '../api';
+import {useEffect,useState } from "react";
+import Partenaires from "../components/partenaires";
+import Clubs from "../components/clubs";
 
 const Home = () => {
+
+  const [event, setEvents] = useState([]); 
+  const [clubs, setClubs] = useState([]);
+  const [parts, setParts] = useState([]);
+
+  useEffect(() => {
+    allevents()
+      .then((data) => {
+        setEvents(data.events);
+        setClubs(data.clubs);
+        setParts(data.parts);
+      })
+      .catch((err) => {
+        console.log("Failed to fetch events");
+      });
+  }, []);
+
+
+
+
   return (
     <>
       <Navbar />
@@ -29,7 +54,6 @@ const Home = () => {
           <img src={editedimg} alt="" />
         </div>
       </div>
-
       <div className="tablezone">
         <table>
           <tr>
@@ -95,18 +119,20 @@ const Home = () => {
 </div>
 
 
+<Events events={event}/>
+
 
 
 <div className="eventligne">
 <h4>Partenaires</h4>
 </div>
 
-
+<Partenaires parts={parts}/>
 
 <div className="eventligne">
 <h4>Clubs</h4>
 </div>
-
+<Clubs clubs={clubs}/>
 <br /><br />
 
       <Footer/>

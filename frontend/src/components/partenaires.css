@@ -1,0 +1,26 @@
+.parts{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-top:30px;
+    margin-left: 7%;
+    margin-right:7%;
+    justify-content: center;
+    justify-items: center;
+}
+
+.parts div{
+    display: block;
+    justify-items: center;
+}
+
+.parts div h4{
+    margin-top:10px;
+    font-family: "montserrat";
+  font-size: 17px;
+}
+.partimg{
+    border-radius: 50%;
+    width:120px;
+    height: 120px;
+    border: 2px solid #1d4355;
+}

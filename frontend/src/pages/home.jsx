@@ -6,6 +6,8 @@ import editedimg from "../img/edited.png";
 import mission from "../img/mission.png";
 import formation from "../img/salle-de-classe.png";
 import insertion from "../img/Integration.png";
+import Footer from "../components/footer";
+import Images from "../components/images";
 
 const Home = () => {
   return (
@@ -86,6 +88,28 @@ const Home = () => {
           </tr>
         </table>
       </div>
+<Images/>
+
+<div className="eventligne">
+<h4>Événement</h4>
+</div>
+
+
+
+
+<div className="eventligne">
+<h4>Partenaires</h4>
+</div>
+
+
+
+<div className="eventligne">
+<h4>Clubs</h4>
+</div>
+
+<br /><br />
+
+      <Footer/>
     </>
   );
 };

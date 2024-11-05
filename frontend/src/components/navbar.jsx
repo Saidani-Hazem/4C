@@ -19,10 +19,10 @@ const Navbar = () => {
 
         <div className="navbar">
           <ul className="navbarlist">
-            <li>Événement</li>
-            <li>Partenaires</li>
-            <li>Clubs</li>
-            <li>À propos</li>
+            <li className='menu__link'>Événement</li>
+            <li className='menu__link'>Partenaires</li>
+            <li className='menu__link'>Clubs</li>
+            <li className='menu__link'>À propos</li>
           </ul>
         </div>
       </div>

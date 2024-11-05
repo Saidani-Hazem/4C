@@ -1,0 +1,92 @@
+.topfooter {
+  height: 200px;
+  background-color: #1d4355;
+
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  color: white;
+}
+
+.footerlogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.element {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+  place-items: center;
+}
+
+.apropos {
+  text-align: justify;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.emails {
+  letter-spacing: 0px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.logotitle {
+  margin-top: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.desc {
+  padding: 0 20%;
+}
+
+h5 {
+  font-family: "barlow", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.emailicon {
+  width: 20px;
+  height: 20px;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.iconsftr {
+  display: flex;
+
+  align-items: center;
+}
+
+.socialmedia {
+  height: 30px;
+  background-color: #1d4355;
+  display: flex;
+  justify-content: center;
+}
+
+.copy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: #51afd9;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}

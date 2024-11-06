@@ -1,9 +1,9 @@
 .topfooter {
-  height: 200px;
+  min-height: 200px;
   background-color: #1d4355;
-
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 footer {
@@ -22,6 +22,8 @@ footer {
   gap: 20px;
   text-align: center;
   place-items: center;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .apropos {
@@ -45,7 +47,7 @@ footer {
 }
 
 .desc {
-  padding: 0 20%;
+  padding: 0 10%;
 }
 
 h5 {
@@ -68,7 +70,6 @@ h5 {
 
 .iconsftr {
   display: flex;
-
   align-items: center;
 }
 
@@ -77,6 +78,8 @@ h5 {
   background-color: #1d4355;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .copy {
@@ -89,4 +92,28 @@ h5 {
   font-size: 14px;
   letter-spacing: 1px;
   font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .element {
+    grid-template-columns: 1fr;
+  }
+
+  .desc {
+    padding: 0 5%;
+  }
+
+  .footerlogo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logotitle {
+    font-size: 14px;
+  }
+
+  .socialmedia {
+    height: auto;
+    padding: 10px 0;
+  }
 }

@@ -6,17 +6,19 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import PlaceIcon from '@mui/icons-material/Place';
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import f from "../img/p.jpg"
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import f from "../img/o.jpg"
 
 import "./events.css"
 
 
-const Events = ({events}) => {
+const Events = ({events,check}) => {
 
     return (
         <div className="eventslist">
   {events.map((event) => (
-    <Card sx={{ maxWidth: 280, mt: 1}} key={event.id}>
+    <Card sx={{ maxWidth: 230, mt: 1}} key={event.id}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -34,9 +36,13 @@ const Events = ({events}) => {
           <Typography variant="body2" sx={{ color: 'text.secondary', display: "flex", alignItems: "center" }}>
             <PlaceIcon/>{event.localisation}
           </Typography>
+          
         </CardContent>
         
       </CardActionArea>
+      {check === true ? <IconButton sx={{float:"right"}} color='secondary' aria-label="delete" size="large">
+  <DeleteIcon fontSize="inherit" />
+</IconButton> : <></>}
     </Card>
   ))}
 </div>

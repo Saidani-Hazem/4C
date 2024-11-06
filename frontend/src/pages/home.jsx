@@ -40,6 +40,8 @@ const Home = () => {
       <Navbar />
 
       <div className="def">
+
+        
         <div className="titre">
           <h3>Centre 4C - ISGB</h3>
           <p>

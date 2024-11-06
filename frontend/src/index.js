@@ -5,11 +5,21 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './pages/login.jsx';
+import Admin from './pages/admin.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>,
+  },
+  {
+    path: "/admin/login",
+    element: <Login/>,
+  },
+  {
+    path: "/admin/main",
+    element: <Admin/>,
   },
 ]);
 

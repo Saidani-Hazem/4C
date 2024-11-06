@@ -1,0 +1,12 @@
+.items{
+    font-family: "barlow", sans-serif;
+    color: gray;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.items div{
+    align-items: center;
+    justify-items: center;
+
+}

@@ -23,6 +23,7 @@ const getevents = async (req, res) => {
   }
 };
 
+
 const deleteevent = async (req, res) => {
   try {
     await events.deleteOne({ _id: req.params.id });

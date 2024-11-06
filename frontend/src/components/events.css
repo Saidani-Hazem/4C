@@ -2,9 +2,20 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     margin-top:30px;
- 
-    margin-left: 7%;
-    margin-right:7%;
-
+    margin-left: 8%;
+    margin-right:8%;
     justify-items: center;
   }
+
+
+  @media (max-width:750px) {
+
+    .eventslist{
+      margin-left: 0%;
+      margin-right:0%;
+      grid-template-columns: repeat(2,1fr);
+      
+  }
+  }
+
+

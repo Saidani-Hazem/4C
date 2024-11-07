@@ -1,0 +1,11 @@
+.addevent{
+    margin-left:10%;
+    margin-right: 10%;
+    display: block;
+}
+
+
+.addevent h4{
+    font-family: "montserrat";
+    margin-bottom:20px;
+}

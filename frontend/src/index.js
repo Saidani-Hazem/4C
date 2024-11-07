@@ -6,7 +6,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Login from './pages/login.jsx';
-import Admin from './pages/admin.jsx';
+
+import MuiDrawer from './MuiComponenets/MuiDrawer.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/main",
-    element: <Admin/>,
-  },
+    element: <MuiDrawer/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

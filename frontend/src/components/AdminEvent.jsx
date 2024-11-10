@@ -1,103 +1,155 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import "./admin.css";
+import axios from "axios";
 
-import { addevent } from "../api.js";
+import "./admin.css";
+import Error from "./alerts/error";
+import Success from "./alerts/success";
 
 const AdminEvent = () => {
-  const [formData, setFormData] = useState({
+  const [showmsj, setShowmsj] = useState(false);
+  const [showsuccses, setShowsuccses] = useState(false);
+  const [msj, setmsj] = useState("");
+  const [event, setevent] = useState({
     name: "",
     localisation: "",
     date: "",
     description: "",
-    image: "",
+    image: null,
   });
 
-  const transform = (e) => {
-    const { id, files } = e.target;
-    if (files && files[0]) {
-      const reader = new FileReader();
-      reader.readAsDataURL(files[0]);
-      reader.onload = () => {
-        setFormData({
-          ...formData,
-          [id]: reader.result,
-        });
-      };
-      reader.onerror = (error) => {
-        console.error("Error reading file:", error);
-      };
+  const showerr = () => {
+    setShowmsj(true);
+    setTimeout(() => {
+      setShowmsj(false);
+    }, 4000);
+  };
+
+  const showsucc = () => {
+    setShowsuccses(true);
+    setTimeout(() => {
+      setShowsuccses(false);
+    }, 4000);
+  };
+
+  const file = useRef(null);
+
+  const change = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setevent({ ...event, image: files[0] });
+    } else {
+      setevent({ ...event, [name]: value });
     }
   };
 
-  const change = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
-  };
-
-  const add = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", event.name);
+    formData.append("localisation", event.localisation);
+    formData.append("date", event.date);
+    formData.append("description", event.description);
+    formData.append("image", event.image);
+
+    if (
+      event.name.trim().length === 0 ||
+      event.localisation.trim().length === 0 ||
+      event.date.trim().length === 0 ||
+      event.description.trim().length === 0 ||
+      !event.image
+    ) {
+      setmsj("Tous les chapms sont obligatoire.");
+      showerr();
+      return;
+    }
     try {
-      await addevent(formData);
-      setFormData({ name: "", image: "" });
-      window.location.reload();
+      await axios.post("http://localhost:5000/api/admin/event", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setmsj("Ajouter Avec succes");
+      showsucc();
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
+
+      setevent({
+        name: "",
+        localisation: "",
+        date: "",
+        description: "",
+        image: null,
+      });
+
+      file.current.value = "";
     } catch (error) {
-      console.error("Failed to add club:", error);
+      console.error("Error adding event", error);
+      setmsj("Erreur d'ajout un evenement.");
+      showerr();
+      return;
     }
   };
 
   return (
     <div className="addevent">
       <h4>Événements</h4>
-      <form onSubmit={add}>
+      <form onSubmit={submit}>
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
-          id="name"
+          name="name"
           placeholder="Titre de l'événement"
           variant="standard"
           type="text"
-          value={formData.name}
           onChange={change}
+          value={event.name}
         />
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
-          id="localisation"
+          name="localisation"
           placeholder="Localisation"
           variant="standard"
           type="text"
-          value={formData.localisation}
           onChange={change}
+          value={event.localisation}
         />
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
-          id="date"
+          name="date"
           placeholder="Date"
           variant="standard"
           type="text"
-          value={formData.date}
+          value={event.date}
           onChange={change}
         />
+        <br />
+
+        <br />
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
           id="image"
+          name="image"
+          placeholder="Image"
           variant="standard"
           type="file"
-          onChange={transform}
+          inputRef={file}
+          onChange={change}
         />
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
-          id="description"
+          name="description"
           multiline
           rows={4}
-          placeholder="Description (optionelle)"
+          placeholder="Description (optionnelle)"
           variant="standard"
-          value={formData.description}
           onChange={change}
+          value={event.description}
         />
+        <br />
+        {showmsj && <Error alert={msj} />}
+        {showsuccses && <Success alert={msj} />}
+        <br />
         <Button type="submit" variant="contained" color="primary">
           Ajouter
         </Button>

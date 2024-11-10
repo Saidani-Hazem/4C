@@ -12,7 +12,7 @@ const Clubs = ({ clubs, check }) => {
         <div key={club._id}>
           <img
             className="partimg"
-            src={club.image_url}
+            src={`http://localhost:5000/${club.image.replace(/\\/g, "/")}`}
             alt=""
           />
           <h4>{club.name}</h4>

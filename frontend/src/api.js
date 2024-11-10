@@ -14,16 +14,6 @@ export const allget = async () => {
   }
 };
 
-export const addevent = async (event) => {
-  try {
-    const res = await api.post("/admin/event", event);
-    return res.data;
-  } catch (error) {
-    console.error("Error adding event:", error);
-    throw error;
-  }
-};
-
 export const deleteEvent = async (id) => {
   try {
     const res = await api.delete(`/admin/event/${id}`);
@@ -34,33 +24,12 @@ export const deleteEvent = async (id) => {
   }
 };
 
-export const addclub = async (club) => {
-  try {
-    const res = await api.post("/admin/club", club);
-    return res.data;
-  } catch (error) {
-    console.error("Error adding club:", error);
-    throw error;
-  }
-};
-
-
 export const deleteclub = async (id) => {
   try {
     const res = await api.delete(`/admin/club/${id}`);
     return res.data;
   } catch (error) {
     console.error("Error deleting club:", error);
-    throw error;
-  }
-};
-
-export const addpartner = async (club) => {
-  try {
-    const res = await api.post("/admin/partenaire", club);
-    return res.data;
-  } catch (error) {
-    console.error("Error adding partenaire:", error);
     throw error;
   }
 };

@@ -7,11 +7,11 @@ const Partenaires = ({ parts, check }) => {
   return (
     <div className="parts">
       {parts.map((part) => (
-        <div key={part.id}>
+        <div key={part._id}>
           <img
             className="partimg"
-            src={part.image_url}
-            alt=""
+            src={`http://localhost:5000/${part.image.replace(/\\/g, "/")}`}
+            alt={part.name}
           />
           <h4>{part.name}</h4>
           {check === true ? (

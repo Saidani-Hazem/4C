@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", router);
-
+app.use('/images', express.static('images'));
 
 mongoose.connect(process.env.mongodb)
-    .then(() => console.log("Connected To MongoDataBase"))
+    .then(() => console.log("Connected To MongoDB"))
     .catch((error) => console.error("Error connecting to MongoDB:", error));
 
 

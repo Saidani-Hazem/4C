@@ -9,8 +9,6 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteEvent } from "../api.js";
-
-
 import "./events.css";
 
 const Events = ({ events, check }) => {
@@ -22,8 +20,8 @@ const Events = ({ events, check }) => {
             <CardMedia
               component="img"
               height="100%"
-              image={event.image_url}
-              alt={event._id}
+              image={`http://localhost:5000/${event.image.replace(/\\/g, "/")}`}
+              alt={event.name}
             />
             <CardContent>
               <Typography

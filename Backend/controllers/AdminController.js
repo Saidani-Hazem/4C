@@ -1,29 +1,32 @@
 const events = require("../models/eventModel");
 const clubs = require("../models/clubModel");
 const partenaires = require("../models/partenaireModel");
-const cloudinary = require("../cloudinary.js");
+
 
 //event methodes
 
 const addevent = async (req, res) => {
-  const { name, localisation, date, description, image } = req.body;
+  const { name, localisation, description, date } = req.body;
+
+  if (!req.file) {
+    return res.status(400).json({ err: "Image upload failed" });
+  }
+  const image = `images/${req.file.filename}`;
   try {
-    const result = await cloudinary.uploader.upload(image, { folder: "events" });
-    const ev = await events.create({
+    const event = await events.create({
       name,
       localisation,
-      date,
       description,
-      image: result.public_id,
-      image_url: result.secure_url
+      date,
+      image,
     });
-    await ev.save();
-    res.status(200).json({ msj: "event saved" });
+    return res.status(200).json({ msg: "Event added successfully", event });
   } catch (error) {
-    console.error("Error :", error);
-    res.status(500).json({ err: error.message });
+    return res.status(500).json({ err: "Error adding event", error });
   }
 };
+
+
 
 
 const getevents = async (req, res) => {
@@ -45,23 +48,25 @@ const deleteevent = async (req, res) => {
 };
 
 // club methodes
-
 const addclub = async (req, res) => {
-  const { name, image } = req.body;
-  try {
-    const result = await cloudinary.uploader.upload(image, { folder: "clubs" });
-    const club = await clubs.create({
-      name,
-      image: result.public_id,
-      image_url: result.secure_url
-    });
-    await club.save();
-    res.status(200).json({ msj: "club saved" });
-  } catch (error) {
-    console.error("Error :", error);
-    res.status(500).json({ err: error.message });
-  }
-};
+  const { name } = req.body;
+    if (!req.file) {
+      return res.status(400).json({ err: "Image upload failed" });
+    }
+    const image = `images/${req.file.filename}`;
+  
+    try {
+      const club = await clubs.create({
+        name,
+        image,
+      });
+      return res.status(200).json({ msg: "Club added successfully", club });
+    } catch (error) {
+      
+      return res.status(500).json({ err: "Error adding club", error });
+    }
+  };
+
 
 const getclubs = async (req, res) => {
   try {
@@ -84,21 +89,23 @@ const deleteclub = async (req, res) => {
 // partenaire methodes
 
 const addpartenaire = async (req, res) => {
-  const { name, image } = req.body;
-  try {
-    const result = await cloudinary.uploader.upload(image, { folder: "partners" });
-    const part  = await partenaires.create({
-      name,
-      image: result.public_id,
-      image_url: result.secure_url
-    });
-    await part.save();
-    res.status(200).json({ msj: "partner saved" });
-  } catch (error) {
-    console.error("error :", error);
-    res.status(500).json({ err: error.message });
-  }
-};
+  const { name } = req.body;
+    if (!req.file) {
+      return res.status(400).json({ err: "Image upload failed" });
+    }
+    const image = `images/${req.file.filename}`;
+  
+    try {
+      const part = await partenaires.create({
+        name,
+        image,
+      });
+      return res.status(200).json({ msg: "partenaire added successfully", part });
+    } catch (error) {
+      
+      return res.status(500).json({ err: "Error adding partenaire", error });
+    }
+  };
 
 const getpartenaires = async (req, res) => {
   try {

@@ -1,50 +1,78 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { addclub } from "../api.js";
+import { useState, useRef } from "react";
+import axios from "axios";
 import "./admin.css";
+import Error from "./alerts/error";
+import Success from "./alerts/success";
 
 const AdminClub = () => {
-  const [formData, setFormData] = useState({
+  const [showmsj, setShowmsj] = useState(false);
+  const [showsuccses, setShowsuccses] = useState(false);
+  const [msj, setmsj] = useState("");
+  const [club, setclub] = useState({
     name: "",
-    image: "",
+    image: null,
   });
+  const showerr = () => {
+    setShowmsj(true);
+    setTimeout(() => {
+      setShowmsj(false);
+    }, 4000);
+  };
 
-  const transform = (e) => {
-    const { id, files } = e.target;
-    if (files && files[0]) {
-      const reader = new FileReader();
-      reader.readAsDataURL(files[0]);
+  const showsucc = () => {
+    setShowsuccses(true);
+    setTimeout(() => {
+      setShowsuccses(false);
+    }, 4000);
+  };
 
-      reader.onload = () => {
-        setFormData({
-          ...formData,
-          [id]: reader.result,
-        });
-      };
+  const file = useRef(null);
 
-      reader.onerror = (error) => {
-        console.error("Error reading file:", error);
-      };
+  const change = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setclub({ ...club, image: files[0] });
+    } else {
+      setclub({ ...club, [name]: value });
     }
   };
 
-  const change = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
-  };
-
-  const add = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", club.name);
+    formData.append("image", club.image);
+
+    if (club.name.trim().length === 0 || !club.image) {
+      setmsj("Tous les chapms sont obligatoire.");
+      showerr();
+      return;
+    }
+
     try {
-      await addclub(formData);
-      setFormData({ name: "", image: "" });
-      window.location.reload();
+      await axios.post("http://localhost:5000/api/admin/club", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setmsj("Ajouter Avec succes");
+      showsucc();
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
+      setclub({
+        name: "",
+        image: null,
+      });
+      file.current.value = "";
     } catch (error) {
-      console.error("Failed to add club:", error);
+      console.error("Error adding club", error);
+      setmsj("Erreur d'ajout un club.");
+      showerr();
+      return;
     }
   };
 
@@ -53,25 +81,32 @@ const AdminClub = () => {
       <div>
         <div className="addevent">
           <h4>Clubs</h4>
-          <form onSubmit={add}>
+          <form onSubmit={submit}>
             <TextField
               sx={{ width: "100%", mb: 3.5 }}
               id="name"
+              name="name"
               placeholder="Nom"
               variant="standard"
               type="text"
-              value={formData.name}
+              value={club.name}
               onChange={change}
             />
             <br />
             <TextField
               sx={{ width: "100%", mb: 3.5 }}
               id="image"
+              name="image"
               placeholder="image"
               variant="standard"
               type="file"
-              onChange={transform}
+              inputRef={file}
+              onChange={change}
             />
+            <br />
+
+            {showmsj && <Error alert={msj} />}
+            {showsuccses && <Success alert={msj} />}
             <br />
             <Button type="submit" variant="contained" color="primary">
               Ajouter

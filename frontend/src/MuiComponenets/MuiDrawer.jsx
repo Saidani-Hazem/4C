@@ -22,7 +22,7 @@ import HandshakeIcon from "@mui/icons-material/Handshake";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PasswordIcon from "@mui/icons-material/Password";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import allevents from "../api";
+import { allget } from "../api";
 import { useEffect, useState } from "react";
 
 import Clubs from "../components/clubs";
@@ -110,7 +110,7 @@ const MuiDrawer = () => {
   const [event, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [parts, setParts] = useState([]);
-  const [pa, setpa] = useState("Events");
+  const [pa, setpa] = useState(localStorage.getItem("page") || "Events");
 
   const content = (p) => {
     switch (p) {
@@ -137,13 +137,20 @@ const MuiDrawer = () => {
         );
       case "Password":
         return <AdminPass />;
-      default:
+      case "Logout":
         return <h4>Logout</h4>;
+      default:
+        return (
+          <>
+            <AdminEvent />
+            <Events events={event} check={true} />
+          </>
+        );
     }
   };
 
   useEffect(() => {
-    allevents()
+    allget()
       .then((data) => {
         setEvents(data.events);
         setClubs(data.clubs);
@@ -215,7 +222,12 @@ const MuiDrawer = () => {
 
         <List>
           {["Events", "Clubs", "Partners", "Password", "Logout"].map((text) => (
-            <div onClick={() => setpa(text)}>
+            <div
+              onClick={() => {
+                localStorage.setItem("page", text);
+                setpa(text);
+              }}
+            >
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>{icon(text)}</ListItemIcon>

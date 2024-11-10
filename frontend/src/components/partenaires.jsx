@@ -2,21 +2,34 @@ import React from "react";
 import "./partenaires.css";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { deletepartner } from "../api";
 const Partenaires = ({ parts, check }) => {
   return (
     <div className="parts">
       {parts.map((part) => (
-        
         <div key={part.id}>
           <img
             className="partimg"
-            src="data:image/png;base64,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"
+            src={part.image_url}
             alt=""
           />
           <h4>{part.name}</h4>
-          {check === true ? <IconButton sx={{}} color='secondary' aria-label="delete" size="large">
-  <DeleteIcon fontSize="inherit" />
-</IconButton> : <></>}
+          {check === true ? (
+            <IconButton
+              onClick={() => {
+                deletepartner(part._id);
+                window.location.reload();
+              }}
+              sx={{}}
+              color="secondary"
+              aria-label="delete"
+              size="large"
+            >
+              <DeleteIcon fontSize="inherit" />
+            </IconButton>
+          ) : (
+            <></>
+          )}
         </div>
       ))}
     </div>

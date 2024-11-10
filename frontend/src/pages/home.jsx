@@ -9,7 +9,7 @@ import insertion from "../img/Integration.png";
 import Footer from "../components/footer";
 import Images from "../components/images";
 import Events from "../components/events";
-import allevents from '../api';
+import {allget} from '../api';
 import {useEffect,useState } from "react";
 import Partenaires from "../components/partenaires";
 import Clubs from "../components/clubs";
@@ -21,7 +21,7 @@ const Home = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    allevents()
+    allget()
       .then((data) => {
         setEvents(data.events);
         setClubs(data.clubs);

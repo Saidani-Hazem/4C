@@ -5,6 +5,7 @@ const club = new Schema(
   {
     name: { type: String, required: true },
     image: { type: String, required: true },
+    image_url:{type: String , required: true}
   },
   {
     timestamps: true,

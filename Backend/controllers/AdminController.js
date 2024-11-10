@@ -1,18 +1,30 @@
 const events = require("../models/eventModel");
 const clubs = require("../models/clubModel");
 const partenaires = require("../models/partenaireModel");
+const cloudinary = require("../cloudinary.js");
 
 //event methodes
 
 const addevent = async (req, res) => {
-  const event = new events(req.body);
+  const { name, localisation, date, description, image } = req.body;
   try {
-    event.save();
+    const result = await cloudinary.uploader.upload(image, { folder: "events" });
+    const ev = await events.create({
+      name,
+      localisation,
+      date,
+      description,
+      image: result.public_id,
+      image_url: result.secure_url
+    });
+    await ev.save();
     res.status(200).json({ msj: "event saved" });
   } catch (error) {
+    console.error("Error :", error);
     res.status(500).json({ err: error.message });
   }
 };
+
 
 const getevents = async (req, res) => {
   try {
@@ -22,7 +34,6 @@ const getevents = async (req, res) => {
     res.status(500).json({ err: error.message });
   }
 };
-
 
 const deleteevent = async (req, res) => {
   try {
@@ -36,11 +47,18 @@ const deleteevent = async (req, res) => {
 // club methodes
 
 const addclub = async (req, res) => {
-  const club = new clubs(req.body);
+  const { name, image } = req.body;
   try {
-    club.save();
+    const result = await cloudinary.uploader.upload(image, { folder: "clubs" });
+    const club = await clubs.create({
+      name,
+      image: result.public_id,
+      image_url: result.secure_url
+    });
+    await club.save();
     res.status(200).json({ msj: "club saved" });
   } catch (error) {
+    console.error("Error :", error);
     res.status(500).json({ err: error.message });
   }
 };
@@ -66,11 +84,18 @@ const deleteclub = async (req, res) => {
 // partenaire methodes
 
 const addpartenaire = async (req, res) => {
-  const part = new partenaires(req.body);
+  const { name, image } = req.body;
   try {
-    part.save();
-    res.status(200).json({ msj: "partenaire saved" });
+    const result = await cloudinary.uploader.upload(image, { folder: "partners" });
+    const part  = await partenaires.create({
+      name,
+      image: result.public_id,
+      image_url: result.secure_url
+    });
+    await part.save();
+    res.status(200).json({ msj: "partner saved" });
   } catch (error) {
+    console.error("error :", error);
     res.status(500).json({ err: error.message });
   }
 };

@@ -7,7 +7,7 @@ const partenaire = require("../models/partenaireModel")
 
 const getall = async (req, res) => {
     try {
-      const events = await event.find({});
+      const events = await event.find({}).sort({ createdAt: -1 });
       const clubs = await club.find({});
       const parts = await partenaire.find({});
       res.status(200).json({events,clubs,parts});

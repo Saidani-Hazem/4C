@@ -139,9 +139,7 @@ const AdminEvent = () => {
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
           name="description"
-          multiline
-          rows={4}
-          placeholder="Description (optionnelle)"
+          placeholder="Lien"
           variant="standard"
           onChange={change}
           value={event.description}

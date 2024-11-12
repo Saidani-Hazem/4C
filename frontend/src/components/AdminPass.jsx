@@ -11,7 +11,7 @@ const AdminPass = () => {
           <h4>Changer Mot De Passe</h4>
           <TextField
             sx={{ width: "100%", mb: 3.5 }}
-            id="titre"
+            id="actual pass"
             placeholder="Mot de passe Actuel"
             variant="standard"
             type="password"
@@ -19,7 +19,7 @@ const AdminPass = () => {
           <br />
           <TextField
             sx={{ width: "100%", mb: 3.5 }}
-            id="titre"
+            id="new pass"
             placeholder="Nouveau Mot De Passe"
             variant="standard"
             type="password"
@@ -28,7 +28,7 @@ const AdminPass = () => {
 
           <TextField
             sx={{ width: "100%", mb: 3.5 }}
-            id="titre"
+            id="confirm pass"
             placeholder="Confirmer Nouveau Mot De Passe"
             variant="standard"
             type="password"

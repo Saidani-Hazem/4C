@@ -40,4 +40,5 @@ router.route("/admin/partenaire/:id").delete(adminController.deletepartenaire);
 router.route("/admin/login").post(AuthController.login);
 router.route("/home").get(MainController.getall);
 
+
 module.exports = router;

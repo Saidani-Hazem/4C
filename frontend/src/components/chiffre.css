@@ -1,0 +1,24 @@
+.chiffreContainer{
+    margin-top:30px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    justify-content:space-around;
+    text-align: center;
+}
+
+.valuename{
+    font-family: "barlow", sans-serif;
+  color: #1d4355;
+  font-size:18px;
+  font-weight: 600;
+}
+.chiffre{
+    font-family: montserrat;
+    font-weight:700;
+    font-size: 28px;
+}
+
+.chiffreContainer:hover{
+    background-color: rgba(40, 157, 210, 0.03);
+}

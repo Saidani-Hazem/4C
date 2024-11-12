@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { Navigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import "./login.css";
-import c from "../img/4c.jpeg";
+import c from "../img/4cc.png";
 import axios from "axios";
 import Error from "../components/alerts/error";
 import Success from "../components/alerts/success";

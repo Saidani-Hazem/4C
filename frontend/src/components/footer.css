@@ -91,7 +91,15 @@ h5 {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.by{
+  font-weight: 700;
+}
+
+.by:hover{
+  color: #1d4355;
 }
 
 @media (max-width: 600px) {

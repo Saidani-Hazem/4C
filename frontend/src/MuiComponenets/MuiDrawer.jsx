@@ -33,6 +33,7 @@ import AdminEvent from "../components/AdminEvent";
 import AdminClub from "../components/AdminClub";
 import AdminPartner from "../components/AdminPartner";
 import AdminPass from "../components/AdminPass";
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -67,8 +68,6 @@ const icon = (it) => {
       return <Groups3Icon color="secondary" />;
     case "Partners":
       return <HandshakeIcon color="secondary" />;
-    case "Logout":
-      return <LogoutIcon color="secondary" />;
     case "Password":
       return <PasswordIcon color="secondary" />;
     default:
@@ -107,6 +106,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const MuiDrawer = () => {
+
   const [event, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [parts, setParts] = useState([]);
@@ -137,8 +137,6 @@ const MuiDrawer = () => {
         );
       case "Password":
         return <AdminPass />;
-      case "Logout":
-        return <h4>Logout</h4>;
       default:
         return (
           <>
@@ -221,7 +219,7 @@ const MuiDrawer = () => {
         <Divider />
 
         <List>
-          {["Events", "Clubs", "Partners", "Password", "Logout"].map((text) => (
+          {["Events", "Clubs", "Partners", "Password"].map((text) => (
             <div
               onClick={() => {
                 localStorage.setItem("page", text);
@@ -236,6 +234,19 @@ const MuiDrawer = () => {
               </ListItem>
             </div>
           ))}
+          <div
+              onClick={() => {
+                
+                window.location.reload();
+              }}
+            >
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon><LogoutIcon color="secondary"/></ListItemIcon>
+                  <ListItemText primary={"Disconnect"}/>
+                </ListItemButton>
+              </ListItem>
+            </div>
         </List>
 
         <Divider />

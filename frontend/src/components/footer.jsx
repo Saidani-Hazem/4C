@@ -7,6 +7,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
@@ -65,7 +66,7 @@ const Footer = () => {
           <XIcon />
         </div>
         <div>
-          <h5 className="copy">all right reserved</h5>
+          <h5 className="copy">&copy; 2024 All right reserved | Powered by&nbsp;<Link className="by" to={"https://www.linkedin.com/in/hazem-saidani-b87814271"}> Saidani Hazem</Link> </h5>
         </div>
       </footer>
     </>

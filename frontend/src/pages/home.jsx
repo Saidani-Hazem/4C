@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import "../components/navbar";
 import Navbar from "../components/navbar";
-import editedimg from "../img/edited.png";
+import editedimg from "../img/4cc.png";
 import mission from "../img/mission.png";
 import formation from "../img/salle-de-classe.png";
 import insertion from "../img/Integration.png";
@@ -13,6 +13,7 @@ import {allget} from '../api';
 import {useEffect,useState } from "react";
 import Partenaires from "../components/partenaires";
 import Clubs from "../components/clubs";
+import Chiffre from "../components/chiffre";
 
 const Home = () => {
 
@@ -42,7 +43,7 @@ const Home = () => {
       <div className="def">
 
         
-        <div className="titre">
+        <div className="titre" id="propos">
           <h3>Centre 4C - ISGB</h3>
           <p>
             Le <b>C</b>entre de <b>C</b>arrière et de <b>C</b>ertification des{" "}
@@ -56,6 +57,7 @@ const Home = () => {
           <img src={editedimg} alt="" />
         </div>
       </div>
+      <Chiffre/>
       <div className="tablezone">
         <table>
           <tr>
@@ -116,7 +118,7 @@ const Home = () => {
       </div>
 <Images/>
 
-<div className="eventligne">
+<div className="eventligne" id="events">
 <h4>Événement</h4>
 </div>
 
@@ -125,13 +127,13 @@ const Home = () => {
 
 
 
-<div className="eventligne">
+<div className="eventligne"  id="parts">
 <h4>Partenaires</h4>
 </div>
 
 <Partenaires parts={parts}/>
 
-<div className="eventligne">
+<div className="eventligne" id="clubs">
 <h4>Clubs</h4>
 </div>
 <Clubs clubs={clubs}/>

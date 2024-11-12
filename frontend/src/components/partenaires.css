@@ -1,47 +1,82 @@
-.parts{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    margin-top:30px;
-    margin-left: 7%;
-    margin-right:7%;
-    justify-content: center;
-    justify-items: center;
+.parts-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+
+  margin-top: 35px;
 }
 
-.parts div{
-    display: block;
-    justify-items: center;
+.scroll-button {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 8px;
 }
 
-.parts div h4{
-    margin-top:10px;
-    font-family: "montserrat";
-    font-size: 17px;
-    text-align: center;
-}
-.partimg{
-    border-radius: 50%;
-    width:120px;
-    height: 120px;
-    border: 1px solid #1d4355;
+.scroll-button.left {
+  left: 10px;
+  margin-right: 55px;
 }
 
-.event{
-    width:160px;
+.scroll-button.right {
+  right: 10px;
+  margin-left: 55px;
 }
 
+.parts {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 0;
+}
 
-@media (max-width:750px){
-    .partimg{
-        width:60px;
-        height: 60px;
-    }
+.parts::-webkit-scrollbar {
+  display: none;
+}
+.parts {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-    .parts{
-        margin-left: 2%;
-        margin-right:2%;
-    }
-    .parts div h4{
-        font-size: 12px;
-    }
+.parts div {
+  flex: 0 0 150px;
+  text-align: center;
+}
+
+.parts div h4 {
+  margin-top: 10px;
+  font-family: "Montserrat";
+  font-size: 17px;
+  color: #333;
+  text-align: center;
+}
+
+.partimg {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #1d4355;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 750px) {
+  .partimg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .parts div h4 {
+    font-size: 12px;
+  }
 }

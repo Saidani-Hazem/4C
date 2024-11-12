@@ -16,7 +16,9 @@ const login = async (req, res) => {
       });
 
       const token = admin.generateAuthToken();
-      return res.status(201).json({ token, msj: "Utilisateur créé et connecté avec succès." });
+      return res
+        .status(201)
+        .json({ token, msj: "Utilisateur créé et connecté avec succès." });
     } else {
       const pass = await bcrypt.compare(password, admin.password);
 
@@ -24,7 +26,9 @@ const login = async (req, res) => {
         const token = admin.generateAuthToken();
         return res.status(200).json({ token, msj: "Connecter" });
       } else {
-        return res.status(400).json({ err: "Nom dutilisateur ou mot de passe incorrect." });
+        return res
+          .status(400)
+          .json({ err: "Nom dutilisateur ou mot de passe incorrect." });
       }
     }
   } catch (error) {
@@ -32,4 +36,5 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+
+module.exports = { login};

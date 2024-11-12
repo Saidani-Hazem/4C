@@ -43,3 +43,4 @@ export const deletepartner = async (id) => {
     throw error;
   }
 };
+

@@ -8,20 +8,25 @@ import {
 import Login from './pages/login.jsx';
 
 import MuiDrawer from './MuiComponenets/MuiDrawer.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home/>
   },
   {
     path: "/admin/login",
-    element: <Login/>,
+    element: <Login/>
   },
   {
     path: "/admin/main",
-    element: <MuiDrawer/>,
+    element: <MuiDrawer/>
+  },
+  {
+    path: "*",
+    element: <NotFound/>
   }
 ]);
 

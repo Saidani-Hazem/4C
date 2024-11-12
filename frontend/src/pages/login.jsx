@@ -1,36 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
+import { Navigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import "./login.css"
-import c from "../img/4c.jpeg"
+import "./login.css";
+import c from "../img/4c.jpeg";
+import axios from "axios";
+import Error from "../components/alerts/error";
+import Success from "../components/alerts/success";
 
 const Login = () => {
+  const [showmsj, setShowmsj] = useState(false);
+  const [showvalid, setShowvalid] = useState(false);
+  const [msj, setMsj] = useState("");
+  const [data, setData] = useState({ username: "", password: "" });
+  const [redirect, setRedirect] = useState(false);
+
+  const showerr = (msg) => {
+    setMsj(msg);
+    setShowmsj(true);
+    setTimeout(() => setShowmsj(false), 4000);
+  };
+
+  const showsucc = (msg) => {
+    setMsj(msg);
+    setShowvalid(true);
+    setTimeout(() => setShowvalid(false), 4000);
+  };
+
+  const change = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    if (data.username.trim().length === 0|| data.password.trim().length === 0) {
+      showerr("Tous les champs sont obligatoires.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/admin/login",
+        { username: data.username, password: data.password },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      if (response.data.msj) {
+        localStorage.setItem("token", response.data.token);
+        setData({ username: "", password: "" });
+        showsucc(response.data.msj);
+        setTimeout(() => {
+          setRedirect(true);
+        }, 4000);
+      } else {
+        showerr("Vérifiez les paramètres de connexion.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      showerr("Vérifiez les paramètres de connexion.");
+    }
+  };
+
+  if (redirect) {
+    return <Navigate to="/admin/main" />;
+  }
+
   return (
-    
-    <div>
-        <div className="background">
-          <div className="form">
-            <img src={c} alt="" />
-            <TextField
-            sx={{width: "100%", mb:3.5}}
-              id="standard-textarea"
-              placeholder="User Name"
-              variant="standard"
-              type="password"
-            />
-            <TextField
-            sx={{width: "100%", mb:3.5}}
-              id="standard-textarea"
-              placeholder="Password"
-              variant="standard"
-              type="password"
-            />
-            <div className="btns">
-              <Button variant="outlined">Cancel</Button>
-              <Button variant="contained" color="primary">Login</Button>
-            </div>
+    <div className="background">
+      <div className="form">
+        <img src={c} alt="4C" />
+        <form onSubmit={submit}>
+          <TextField
+            sx={{ width: "100%", mb: 3.5 }}
+            id="username"
+            name="username"
+            placeholder="User Name"
+            variant="standard"
+            type="text"
+            value={data.username}
+            onChange={change}
+          />
+          <TextField
+            sx={{ width: "100%", mb: 3.5 }}
+            id="password"
+            name="password"
+            placeholder="Password"
+            variant="standard"
+            type="password"
+            value={data.password}
+            onChange={change}
+          />
+          <br />
+          {showmsj && <Error alert={msj} />}
+          {showvalid && <Success alert={msj} />}
+          <br />
+          <div className="btns">
+            <Button variant="outlined">Cancel</Button>
+            <Button type="submit" variant="contained" color="primary">
+              Login
+            </Button>
           </div>
-        </div>
+        </form>
+      </div>
     </div>
   );
 };

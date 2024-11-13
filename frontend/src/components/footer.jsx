@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="element">
             <div>
               <h5>À propos de Nous</h5>
-              <p className="apropos desc">
+              <p className="apropos informations">
                 Le Centre de Carrière et de Certification des Compétences « 4C »
                 est une structure présente dans les établissements
                 universitaires...
@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
             <div>
               <h5>Informations</h5>
-              <div>
+              <div className="informations">
                 <div className="iconsftr">
                   <EmailIcon />
                   <h2 className="apropos emails">4c@isgb.ucar.tn</h2>
@@ -61,12 +61,21 @@ const Footer = () => {
           </div>
         </div>
         <div className="socialmedia">
-          <FacebookIcon />
+          <Link to={"https://www.facebook.com/profile.php?id=61567461394371"} target="_blank"><FacebookIcon color="primary"/></Link>
           <LinkedInIcon />
           <XIcon />
         </div>
         <div>
-          <h5 className="copy">&copy; 2024 All right reserved | Powered by&nbsp;<Link className="by" to={"https://www.linkedin.com/in/hazem-saidani-b87814271"}> Saidani Hazem</Link> </h5>
+          <h5 className="copy">
+            &copy; 2024 All right reserved | Powered by&nbsp;
+            <Link
+              className="by"
+              to={"https://www.linkedin.com/in/hazem-saidani-b87814271"}
+              target="_blank"
+            >
+              Saidani Hazem
+            </Link>{" "}
+          </h5>
         </div>
       </footer>
     </>

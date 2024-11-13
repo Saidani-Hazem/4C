@@ -1,8 +1,18 @@
 .addevent{
-    margin-left:10%;
-    margin-right: 10%;
+    width:100%;
     display: block;
+    
+    
+    justify-items: center;
+    padding-bottom:20px;
 }
+
+.addevent form{
+width:45%;
+
+
+}
+
 
 
 .addevent h4{

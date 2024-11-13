@@ -116,7 +116,7 @@ const AdminEvent = () => {
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
           name="date"
-          placeholder="Date"
+          placeholder="Date (11 mois 1111 00:00AM)"
           variant="standard"
           type="text"
           value={event.date}
@@ -138,7 +138,7 @@ const AdminEvent = () => {
         <TextField
           sx={{ width: "100%", mb: 3.5 }}
           name="description"
-          placeholder="Lien"
+          placeholder="Lien (URL d'inscription)"
           variant="standard"
           onChange={change}
           value={event.description}

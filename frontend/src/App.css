@@ -2,7 +2,9 @@
   padding: 0;
   margin: 0;
 }
-
+body{
+  padding-top: 60px;
+}
 h3 {
   font-family: "barlow", sans-serif;
   color: #1d4355;
@@ -96,7 +98,7 @@ h3 {
 
 .notfoundContainer {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;

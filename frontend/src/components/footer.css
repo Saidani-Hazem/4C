@@ -3,7 +3,7 @@
   background-color: #1d4355;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding:0px 20px;
 }
 
 footer {
@@ -15,7 +15,9 @@ footer {
   height: 60px;
   border-radius: 5px;
 }
-
+.informations{
+  padding-top:20px;
+}
 .element {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,7 +30,6 @@ footer {
 
 .apropos {
   text-align: justify;
-  margin-top: 10px;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
@@ -38,6 +39,7 @@ footer {
   letter-spacing: 0px;
   font-weight: 400;
   text-align: left;
+  padding-left:8px;
 }
 
 .logotitle {
@@ -46,9 +48,7 @@ footer {
   text-align: center;
 }
 
-.desc {
-  padding: 0 10%;
-}
+
 
 h5 {
   font-family: "barlow", sans-serif;
@@ -61,12 +61,7 @@ h5 {
   height: 20px;
 }
 
-.contact {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-}
+
 
 .iconsftr {
   display: flex;
@@ -97,6 +92,7 @@ h5 {
 .by{
   font-weight: 700;
   color: #1d4355;
+  text-decoration: none;
 }
 
 .by:hover{
@@ -124,5 +120,8 @@ h5 {
   .socialmedia {
     height: auto;
     padding: 10px 0;
+  }
+  .copy{
+    font-size: 10px;
   }
 }

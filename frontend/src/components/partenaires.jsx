@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import "./partenaires.css";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { deletepartner } from "../api";
-const Partenaires = ({ parts, check }) => {
+
+const Partenaires = ({parts}) => {
   const partsRef = useRef(null);
 
   const scrollByOne = (direction) => {
@@ -28,22 +27,7 @@ const Partenaires = ({ parts, check }) => {
             alt={part.name}
           />
           <h4>{part.name}</h4>
-          {check === true ? (
-            <IconButton
-              onClick={() => {
-                deletepartner(part._id);
-                window.location.reload();
-              }}
-              sx={{}}
-              color="secondary"
-              aria-label="delete"
-              size="large"
-            >
-              <DeleteIcon fontSize="inherit" />
-            </IconButton>
-          ) : (
-            <></>
-          )}
+         
         </div>
       ))}
     </div>

@@ -96,10 +96,11 @@ h5 {
 
 .by{
   font-weight: 700;
+  color: #1d4355;
 }
 
 .by:hover{
-  color: #1d4355;
+  color:white;
 }
 
 @media (max-width: 600px) {

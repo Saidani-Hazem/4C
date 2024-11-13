@@ -89,7 +89,7 @@ const deleteclub = async (req, res) => {
 // partenaire methodes
 
 const addpartenaire = async (req, res) => {
-  const { name } = req.body;
+  const { name,partname,phone,phone2,email,email2 } = req.body;
     if (!req.file) {
       return res.status(400).json({ err: "Image upload failed" });
     }
@@ -99,6 +99,14 @@ const addpartenaire = async (req, res) => {
       const part = await partenaires.create({
         name,
         image,
+        contact:{
+          partname,
+          phone,
+          phone2,
+          email,
+          email2
+        }
+
       });
       return res.status(200).json({ msg: "partenaire added successfully", part });
     } catch (error) {
@@ -107,6 +115,7 @@ const addpartenaire = async (req, res) => {
     }
   };
 
+  
 const getpartenaires = async (req, res) => {
   try {
     const part = await partenaires.find({});

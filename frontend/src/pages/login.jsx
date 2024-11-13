@@ -32,10 +32,18 @@ const Login = () => {
     setData({ ...data, [name]: value });
   };
 
+const cancel = () =>{
+  setData({ username: "", password: "" })
+}
+
+
   const submit = async (e) => {
     e.preventDefault();
 
-    if (data.username.trim().length === 0|| data.password.trim().length === 0) {
+    if (
+      data.username.trim().length === 0 ||
+      data.password.trim().length === 0
+    ) {
       showerr("Tous les champs sont obligatoires.");
       return;
     }
@@ -51,15 +59,21 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         setData({ username: "", password: "" });
         showsucc(response.data.msj);
+        setData({ username: "", password: "" })
         setTimeout(() => {
           setRedirect(true);
         }, 4000);
+        return;
       } else {
-        showerr("Vérifiez les paramètres de connexion.");
+        setMsj("Vérifiez les paramètres de connexion.")
+        showerr(msj);
+        setData({ username: "", password: "" });
+        return;
       }
     } catch (error) {
-      console.error("Login error:", error);
-      showerr("Vérifiez les paramètres de connexion.");
+      setMsj("Vérifiez les paramètres de connexion.");
+      showerr(msj);
+      return;
     }
   };
 
@@ -97,7 +111,7 @@ const Login = () => {
           {showvalid && <Success alert={msj} />}
           <br />
           <div className="btns">
-            <Button variant="outlined">Cancel</Button>
+            <Button onClick={cancel} variant="outlined">Cancel</Button>
             <Button type="submit" variant="contained" color="primary">
               Login
             </Button>

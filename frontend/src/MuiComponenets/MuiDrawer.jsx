@@ -24,15 +24,13 @@ import PasswordIcon from "@mui/icons-material/Password";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { allget } from "../api";
 import { useEffect, useState } from "react";
-
-import Clubs from "../components/clubs";
-import Partenaires from "../components/partenaires";
-
 import Events from "../components/events";
 import AdminEvent from "../components/AdminEvent";
 import AdminClub from "../components/AdminClub";
 import AdminPartner from "../components/AdminPartner";
 import AdminPass from "../components/AdminPass";
+import Adminclublist from "../components/adminclublist";
+import Adminpartlist from "../components/adminpartlist";
 
 const drawerWidth = 240;
 
@@ -125,14 +123,14 @@ const MuiDrawer = () => {
         return (
           <>
             <AdminClub />
-            <Clubs clubs={clubs} check={true} />
+            <Adminclublist clubs={clubs}/>
           </>
         );
       case "Partners":
         return (
           <>
             <AdminPartner />
-            <Partenaires parts={parts} check={true} />
+            <Adminpartlist parts={parts}/>
           </>
         );
       case "Password":
@@ -236,7 +234,7 @@ const MuiDrawer = () => {
           ))}
           <div
               onClick={() => {
-                
+                localStorage.removeItem("token")
                 window.location.reload();
               }}
             >

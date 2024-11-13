@@ -46,26 +46,26 @@
 }
 
 .eventslist > div {
-  flex: 0 0 230px; /* Set width for each event card */
+  flex: 0 0 230px;
 }
 
 
 
-/* Responsive Styles */
+
 @media (min-width: 1024px) {
   .eventslist > div {
-    flex: 0 0 30%; /* 3 events per row on desktop */
+    flex: 0 0 30%;
   }
 }
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .eventslist > div {
-    flex: 0 0 45%; /* 2 events per row on tablet */
+    flex: 0 0 45%;
   }
 }
 
 @media (max-width: 768px) {
   .eventslist > div {
-    flex: 0 0 90%; /* 1 event per row on mobile */
+    flex: 0 0 90%;
   }
 }

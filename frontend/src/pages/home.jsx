@@ -7,13 +7,14 @@ import mission from "../img/mission.png";
 import formation from "../img/salle-de-classe.png";
 import insertion from "../img/Integration.png";
 import Footer from "../components/footer";
-import Images from "../components/images";
+
 import Events from "../components/events";
 import {allget} from '../api';
 import {useEffect,useState } from "react";
 import Partenaires from "../components/partenaires";
 import Clubs from "../components/clubs";
 import Chiffre from "../components/chiffre";
+import Imgswiper from "../components/imgswiper";
 
 const Home = () => {
 
@@ -39,7 +40,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-
+<Imgswiper/>
       <div className="def">
 
         
@@ -116,7 +117,7 @@ const Home = () => {
           </tr>
         </table>
       </div>
-<Images/>
+
 
 <div className="eventligne" id="events">
 <h4>Événement</h4>

@@ -85,7 +85,6 @@ const AdminEvent = () => {
 
       file.current.value = "";
     } catch (error) {
-      console.error("Error adding event", error);
       setmsj("Erreur d'ajout un evenement.");
       showerr();
       return;

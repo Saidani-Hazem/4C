@@ -1,12 +1,11 @@
 import React, { useRef } from "react";
 import "./partenaires.css";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { deleteclub } from "../api";
 
-const Clubs = ({ clubs, check }) => {
+
+const Clubs = ({ clubs}) => {
   const partsRef = useRef(null);
 
   const scrollByOneClub = (direction) => {
@@ -33,19 +32,6 @@ const Clubs = ({ clubs, check }) => {
               alt=""
             />
             <h4>{club.name}</h4>
-            {check && (
-              <IconButton
-                onClick={() => {
-                  deleteclub(club._id);
-                  window.location.reload();
-                }}
-                color="secondary"
-                aria-label="delete"
-                size="large"
-              >
-                <DeleteIcon fontSize="inherit" />
-              </IconButton>
-            )}
           </div>
         ))}
       </div>

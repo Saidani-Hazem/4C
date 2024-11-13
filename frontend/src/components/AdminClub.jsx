@@ -69,7 +69,6 @@ const AdminClub = () => {
       });
       file.current.value = "";
     } catch (error) {
-      console.error("Error adding club", error);
       setmsj("Erreur d'ajout un club.");
       showerr();
       return;

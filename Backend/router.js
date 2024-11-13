@@ -39,6 +39,6 @@ router.route("/admin/partenaire/:id").delete(adminController.deletepartenaire);
 
 router.route("/admin/login").post(AuthController.login);
 router.route("/home").get(MainController.getall);
-
+router.route("/admin/change").post(AuthController.changePass);
 
 module.exports = router;

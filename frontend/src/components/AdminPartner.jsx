@@ -15,6 +15,11 @@ const AdminPartner = () => {
   const [partenaire, setpartenaire] = useState({
     name: "",
     image: null,
+    partname: "",
+    phone: "",
+    phone2: "",
+    email: "",
+    email2: "",
   });
 
   const showerr = () => {
@@ -31,14 +36,12 @@ const AdminPartner = () => {
     }, 4000);
   };
 
-  const [image, setimage] = useState(null);
   const file = useRef(null);
 
   const change = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
       setpartenaire({ ...partenaire, image: files[0] });
-      setimage(URL.createObjectURL(files[0]));
     } else {
       setpartenaire({ ...partenaire, [name]: value });
     }
@@ -50,18 +53,21 @@ const AdminPartner = () => {
     const formData = new FormData();
     formData.append("name", partenaire.name);
     formData.append("image", partenaire.image);
+    formData.append("partname", partenaire.partname);
+    formData.append("email", partenaire.email);
+    formData.append("email2", partenaire.email2);
+    formData.append("phone", partenaire.phone);
+    formData.append("phone2", partenaire.phone2);
     if (partenaire.name.trim().length === 0 || !partenaire.image) {
-      setmsj("Tous les chapms sont obligatoire.");
+      setmsj("Nom de L'entreprise et l'image sont obligatoire.");
       showerr();
       return;
     }
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/admin/partenaire",
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
+      await axios.post("http://localhost:5000/api/admin/partenaire", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       setmsj("Ajouter Avec succes");
       showsucc();
@@ -71,11 +77,16 @@ const AdminPartner = () => {
       setpartenaire({
         name: "",
         image: null,
+        partname: "",
+        phone: "",
+        phone2: "",
+        email: "",
+        email2: "",
       });
-      setimage(null);
+
       file.current.value = "";
     } catch (error) {
-      console.error("Error adding partenaire", error);
+      
       setmsj("Erreur d'ajout un partenaire.");
       showerr();
       return;
@@ -109,12 +120,58 @@ const AdminPartner = () => {
               inputRef={file}
               onChange={change}
             />
+            <TextField
+              sx={{ width: "100%", mb: 3.5 }}
+              id="partname"
+              name="partname"
+              placeholder="Nom & Prenom de responsable (optionelle)"
+              variant="standard"
+              type="text"
+              value={partenaire.partname}
+              onChange={change}
+            />
+            <TextField
+              sx={{ width: "100%", mb: 3.5 }}
+              id="phone"
+              name="phone"
+              placeholder="phone (optionelle)"
+              variant="standard"
+              type="text"
+              value={partenaire.phone}
+              onChange={change}
+            />
+            <TextField
+              sx={{ width: "100%", mb: 3.5 }}
+              id="phone2"
+              name="phone2"
+              placeholder="phone2 (optionelle)"
+              variant="standard"
+              type="text"
+              value={partenaire.phone2}
+              onChange={change}
+            />
+            <TextField
+              sx={{ width: "100%", mb: 3.5 }}
+              id="email"
+              name="email"
+              placeholder="email (optionelle)"
+              variant="standard"
+              type="text"
+              value={partenaire.email}
+              onChange={change}
+            />
+            <TextField
+              sx={{ width: "100%", mb: 3.5 }}
+              id="email2"
+              name="email2"
+              placeholder="email 2 (optionelle)"
+              variant="standard"
+              type="text"
+              value={partenaire.email2}
+              onChange={change}
+            />
             <br />
-            {image && (
-              <div className="preview">
-                <img src={image} alt="Preview" id="img-uploaded" />
-              </div>
-            )}
+
             {showmsj && <Error alert={msj} />}
             {showsuccses && <Success alert={msj} />}
             <br />

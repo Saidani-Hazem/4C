@@ -15,13 +15,14 @@ import "./events.css";
 
 import { Button } from "@mui/material";
 
+
 const Events = ({ events, check }) => {
   const eventsRef = useRef(null);
 
   const scrollByOneEvent = (direction) => {
     if (eventsRef.current) {
       const scrollAmount =
-        eventsRef.current.querySelector("div:not(.spacer)").offsetWidth + 20;
+        eventsRef.current.querySelector("div:not(.spacer)").offsetWidth + 40;
       eventsRef.current.scrollLeft +=
         direction === "right" ? scrollAmount : -scrollAmount;
     }
@@ -37,8 +38,9 @@ const Events = ({ events, check }) => {
       </IconButton>
 
       <div className="eventslist" ref={eventsRef}>
+      
         {events.map((event) => (
-          <Card sx={{ maxWidth: 230, mt: 1,position: "relative" }} key={event._id}>
+          <Card sx={{ maxWidth: 270, mt: 1,position: "relative" }} key={event._id}>
             <CardActionArea>
               <CardMedia
                 component="img"

@@ -41,10 +41,10 @@ const Home = () => {
     <>
       <Navbar />
 <Imgswiper/>
-      <div className="def">
+      <div className="def" id="propos">
 
         
-        <div className="titre" id="propos">
+        <div className="titre" >
           <h3>Centre 4C - ISGB</h3>
           <p>
             Le <b>C</b>entre de <b>C</b>arrière et de <b>C</b>ertification des{" "}
@@ -128,13 +128,13 @@ const Home = () => {
 
 
 
-<div className="eventligne"  id="parts">
+<div className="eventligne">
 <h4>Partenaires</h4>
 </div>
 
 <Partenaires parts={parts}/>
 
-<div className="eventligne" id="clubs">
+<div className="eventligne" >
 <h4>Clubs</h4>
 </div>
 <Clubs clubs={clubs}/>

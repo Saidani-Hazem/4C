@@ -31,7 +31,7 @@ const Imgswiper = () => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={5}
+      spaceBetween={25}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
@@ -41,74 +41,74 @@ const Imgswiper = () => {
         700: { slidesPerView: 3 },
       }}
     >
-      <SwiperSlide style={{ backgroundImage: `url(${a})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+      <SwiperSlide >
+        <div className="imgswip" style={{ backgroundImage: `url(${a})` }}>
+          {" "}
+        </div>
       </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${b})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-       
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${b})` }}></div>
       </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${g})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      
-      <SwiperSlide style={{ backgroundImage: `url(${d})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${e})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${f})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      
-      
-      <SwiperSlide style={{ backgroundImage: `url(${h})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${i})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      
-      <SwiperSlide style={{ backgroundImage: `url(${k})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${l})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${m})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${n})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${o})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${p})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${q})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${r})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${s})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${t})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${u})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${v})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
-      </SwiperSlide>
-      <SwiperSlide style={{ backgroundImage: `url(${w})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${g})` }}></div>
       </SwiperSlide>
 
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${d})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${e})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${f})` }}></div>
+      </SwiperSlide>
 
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${h})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${i})` }}></div>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${k})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${l})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${m})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${n})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${o})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${p})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${q})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${r})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${s})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${t})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${u})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${v})` }}></div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="imgswip" style={{ backgroundImage: `url(${w})` }}></div>
+      </SwiperSlide>
     </Swiper>
   );
 };

@@ -91,7 +91,7 @@ const Events = ({ events, check }) => {
     target="_blank"
     sx={{ position: "absolute", bottom: 8, right: 8 }}
   >
-    <h4>Register</h4>
+    <h4 id="parts">Register</h4>
   </Button>
             {check && (
               <>

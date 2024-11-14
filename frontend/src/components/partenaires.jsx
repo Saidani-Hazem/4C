@@ -26,7 +26,7 @@ const Partenaires = ({parts}) => {
             src={`http://localhost:5000/${part.image.replace(/\\/g, "/")}`}
             alt={part.name}
           />
-          <h4>{part.name}</h4>
+          <h4 id="clubs">{part.name}</h4>
          
         </div>
       ))}

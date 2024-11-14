@@ -6,7 +6,6 @@
   margin: 0 auto;
   overflow: hidden;
   width: 100%;
-
   margin-top: 35px;
 }
 
@@ -37,24 +36,23 @@
   scroll-behavior: smooth;
   justify-content: flex-start;
   width: 100%;
-  padding: 10px 0;
+  padding: 80px 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .parts::-webkit-scrollbar {
   display: none;
 }
-.parts {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+
 
 .parts div {
-  flex: 0 0 150px;
+  flex: 0 0 220px;
   text-align: center;
 }
 
 .parts div h4 {
-  margin-top: 10px;
+  padding-top: 25px;
   font-family: "Montserrat";
   font-size: 17px;
   color: #333;
@@ -62,13 +60,13 @@
 }
 
 .partimg {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  border: 1px solid #1d4355;
+  border-radius: 2%;
+  width: 150px;
+  height: 150px;
   display: block;
   margin: 0 auto;
 }
+
 
 @media (max-width: 750px) {
   .partimg {

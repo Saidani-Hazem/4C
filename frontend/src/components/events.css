@@ -33,7 +33,7 @@
   scroll-behavior: smooth;
   justify-content: flex-start;
   width: 100%;
-  padding: 10px 0;
+  padding: 40px 0;
 }
 
 .eventslist::-webkit-scrollbar {

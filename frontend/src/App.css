@@ -46,9 +46,9 @@ h3 {
   width: 100px;
   transform: rotate(45deg);
   height: 2px;
-
   border-radius: 50%;
 }
+
 .ligne2 {
   width: 100px;
   transform: rotate(-45deg);

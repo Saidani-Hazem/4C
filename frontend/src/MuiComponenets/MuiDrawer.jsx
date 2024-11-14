@@ -31,7 +31,7 @@ import AdminPartner from "../components/AdminPartner";
 import AdminPass from "../components/AdminPass";
 import Adminclublist from "../components/adminclublist";
 import Adminpartlist from "../components/adminpartlist";
-
+import { deleteCookie } from "../api";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -105,10 +105,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const MuiDrawer = () => {
 
+  
   const [event, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [parts, setParts] = useState([]);
   const [pa, setpa] = useState(localStorage.getItem("page") || "Events");
+
 
   const content = (p) => {
     switch (p) {
@@ -169,6 +171,7 @@ const MuiDrawer = () => {
   };
 
   return (
+
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -217,6 +220,7 @@ const MuiDrawer = () => {
         <Divider />
 
         <List>
+        
           {["Events", "Clubs", "Partners", "Password"].map((text) => (
             <div
               onClick={() => {
@@ -234,7 +238,7 @@ const MuiDrawer = () => {
           ))}
           <div
               onClick={() => {
-                localStorage.removeItem("token")
+                deleteCookie("token")
                 window.location.reload();
               }}
             >

@@ -29,7 +29,6 @@ const Footer = () => {
                   <EmailIcon />
                   <h2 className="apropos emails">4c@isgb.ucar.tn</h2>
                 </div>
-
                 <div className="iconsftr">
                   <EmailIcon />
                   <h2 className="apropos emails">Equipe4c@isgb.ucar.tn</h2>

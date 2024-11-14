@@ -41,4 +41,6 @@ router.route("/admin/login").post(AuthController.login);
 router.route("/home").get(MainController.getall);
 router.route("/admin/change").post(AuthController.changePass);
 
+router.route("/admin/verify").post(AuthController.verify);
+
 module.exports = router;

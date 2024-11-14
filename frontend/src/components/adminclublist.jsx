@@ -5,6 +5,9 @@ import { deleteclub } from "../api";
 import "./adminlist.css"
 
 const Adminclublist = ({clubs}) => {
+
+
+
     return (
         <div className='adminclublist'>
             {clubs.map((club) => (

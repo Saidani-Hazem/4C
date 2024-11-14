@@ -1,5 +1,6 @@
 const user = require("../../models/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
@@ -36,8 +37,6 @@ const login = async (req, res) => {
   }
 };
 
-
-
 const changePass = async (req, res) => {
   const { actualPass, newPass } = req.body;
   try {
@@ -68,4 +67,24 @@ const changePass = async (req, res) => {
 };
 
 
-module.exports = { login,changePass };
+
+const verify = async(req, res) => {
+  const token = req.body.token;
+  try {
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+        if (err) {
+          res.status(400).json({ err: "user non authentifier" });
+        } else {
+          res.status(200).json({ msj: "user authentifier" });
+        }
+      });
+    } else {
+      res.status(400).json({ err: "user non authentifier" });
+    }
+  } catch (error) {
+    res.status(400).json({ err: error });
+  }
+};
+
+module.exports = { login, changePass,verify };

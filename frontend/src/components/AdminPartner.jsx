@@ -103,7 +103,7 @@ const AdminPartner = () => {
               sx={{ width: "100%", mb: 3.5 }}
               id="name"
               name="name"
-              placeholder="Nom"
+              placeholder="Nom de l'entreprise"
               variant="standard"
               type="text"
               value={partenaire.name}

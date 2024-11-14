@@ -7,7 +7,7 @@ import c from "../img/4cc.png";
 import axios from "axios";
 import Error from "../components/alerts/error";
 import Success from "../components/alerts/success";
-
+import { setCookie } from "../api";
 const Login = () => {
   const [showmsj, setShowmsj] = useState(false);
   const [showvalid, setShowvalid] = useState(false);
@@ -56,12 +56,15 @@ const cancel = () =>{
       );
 
       if (response.data.msj) {
-        localStorage.setItem("token", response.data.token);
+        setCookie("token",response.data.token,1)
         setData({ username: "", password: "" });
         showsucc(response.data.msj);
         setData({ username: "", password: "" })
         setTimeout(() => {
           setRedirect(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1);
         }, 4000);
         return;
       } else {
@@ -78,7 +81,7 @@ const cancel = () =>{
   };
 
   if (redirect) {
-    return <Navigate to="/admin/main" />;
+    return <Navigate to="/admin/main"/>;
   }
 
   return (
